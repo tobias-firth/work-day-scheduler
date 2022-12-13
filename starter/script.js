@@ -1,4 +1,5 @@
 // Store each time area as a variable
+
 var nineAmEl = $(".nine-am")
 var tenAmEl = $(".ten-am")
 var elevenAmEl = $(".eleven-am")
@@ -16,25 +17,22 @@ $(dayEl).text(date)
 
 // Store the time and update in real time
 
-
-
 // Add the time to the label of each timeblock
 
 var workingDay = [
-    moment().hour(9).format("ha"),
-    moment().hour(10).format("ha"),
-    moment().hour(11).format("ha"),
-    moment().hour(12).format("ha"),
-    moment().hour(13).format("ha"),
-    moment().hour(14).format("ha"),
-    moment().hour(15).format("ha"),
-    moment().hour(16).format("ha"),
-    moment().hour(17).format("ha"),
+    moment().hours(9).format("H"),
+    moment().hours(10).format("H"),
+    moment().hours(11).format("H"),
+    moment().hours(12).format("H"),
+    moment().hours(13).format("H"),
+    moment().hours(14).format("H"),
+    moment().hours(15).format("H"),
+    moment().hours(16).format("H"),
+    moment().hours(17).format("H"),
 ]
 
 
-
-$(nineAmEl).children(".input-group-text").text(workingDay[0])
+var nine = $(nineAmEl).children(".input-group-text").text(workingDay[0])
 $(tenAmEl).children(".input-group-text").text(workingDay[1])
 $(elevenAmEl).children(".input-group-text").text(workingDay[2])
 $(noonEl).children(".input-group-text").text(workingDay[3])
@@ -44,11 +42,36 @@ $(threePmEl).children(".input-group-text").text(workingDay[6])
 $(fourPmEl).children(".input-group-text").text(workingDay[7])
 $(fivePmEl).children(".input-group-text").text(workingDay[8])
 
+
 // Color-code each timeblock based on past, present, and future when the timeblock is viewed.
 
+var currentHour = moment().hours(13).format("H")
 
+    for(var i=0; i<workingDay.length; i++){  
+        
+        var hourInt = parseInt(workingDay[i])
+        var currentInt = parseInt(currentHour)
 
-    // If current hour after timeblock hour - backgound-color = grey (Past)
+        // console.log(hourInt);
+        // console.log(currentInt)
+
+        
+        if(hourInt === currentInt) {
+            console.log(workingDay[i] + " is the current time");
+            $("span:contains('" + workingDay[i]+ "')").parent().children(".form-control").addClass("present")
+        }
+        else if (hourInt < currentInt) {
+            console.log(workingDay[i] + " is in the past");
+            $("span:contains('" + workingDay[i]+ "')").parent().children(".form-control").addClass("past")
+        }
+        else if (hourInt > currentInt) {
+            console.log(workingDay[i] + " is in the future");
+            $("span:contains('" + workingDay[i]+ "')").parent().children(".form-control").addClass("future")
+        }
+        }
+
+   
+
 
 
     // If current hour = timeblock hour - backgound-color = red (Present)
