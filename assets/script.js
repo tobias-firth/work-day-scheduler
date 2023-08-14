@@ -12,15 +12,15 @@ var fivePmEl = $(".five-pm")
 
 // Store each hour of the working day in an array
 var workingDay = [
-    moment().hours(9).format("H"),
-    moment().hours(10).format("H"),
-    moment().hours(11).format("H"),
-    moment().hours(12).format("H"),
-    moment().hours(13).format("H"),
-    moment().hours(14).format("H"),
-    moment().hours(15).format("H"),
-    moment().hours(16).format("H"),
-    moment().hours(17).format("H"),
+    moment().hours(9).format("HH:00"),
+    moment().hours(10).format("HH:00"),
+    moment().hours(11).format("HH:00"),
+    moment().hours(12).format("HH:00"),
+    moment().hours(13).format("HH:00"),
+    moment().hours(14).format("HH:00"),
+    moment().hours(15).format("HH:00"),
+    moment().hours(16).format("HH:00"),
+    moment().hours(17).format("HH:00"),
 ]
 
 
@@ -38,9 +38,15 @@ $(fourPmEl).children(".input-group-text").text(workingDay[7])
 $(fivePmEl).children(".input-group-text").text(workingDay[8])
 
 // Display the current day at the top of the calender when a user opens the planner.
-var dayEl = $("#currentDay")
-var date = moment().format("dddd, MMMM Do")
-$(dayEl).text(date)
+var dayEl = $("#currentDay");
+var date = moment().format("dddd, MMMM Do");
+$(dayEl).text(date);
+
+// Display the current time at the top of the calender when a user opens the planner.
+var timeEl = $("#currentTime");
+var time = moment().format("HH:mm");
+$(timeEl).text(time);
+
 
 // Store the time and update in real time
 var currentHour = moment().format("HH");
