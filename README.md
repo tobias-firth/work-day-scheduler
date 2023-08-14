@@ -15,6 +15,6 @@
 
 !["Demo Screenshot"](images/Demo_Screenshot.png)
 
-https://github.com/tobias-firth/work-day-scheduler 
+[Github Repo](https://github.com/tobias-firth/work-day-scheduler) 
 
-https://tobias-firth.github.io/work-day-scheduler/ 
+[Project](https://tobias-firth.github.io/work-day-scheduler/) 
